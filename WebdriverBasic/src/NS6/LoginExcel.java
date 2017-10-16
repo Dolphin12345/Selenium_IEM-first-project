@@ -1,12 +1,9 @@
 package NS6;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +12,7 @@ import lib.ExcelDataConfig;
 
 public class LoginExcel {
 
-	WebDriver driver;
+	WebDriver driver = null;
 
 	@Test(dataProvider = "ProjectData")
 	public void LoginToWebsite(String user, String pass) throws InterruptedException {
@@ -37,8 +34,8 @@ public class LoginExcel {
 		// WebElement LoginMenu = driver.findElement(By.id("login"));
 		// action.moveToElement(LoginMenu).perform();
 		// LoginMenu.click();
-		System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\geckodriver-v0.19.0-win64\\geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "D:/SeleniumWebdriver/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
 
@@ -99,8 +96,8 @@ public class LoginExcel {
 		@Test(dataProvider = "ProjectData1")
 		public void LoginToWebsite1(String user, String pass) throws InterruptedException {
 			
-			System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\geckodriver-v0.19.0-win64\\geckodriver.exe");
-			WebDriver driver = new FirefoxDriver();
+			System.setProperty("webdriver.chrome.driver", "D:/SeleniumWebdriver/chromedriver.exe");
+			WebDriver driver = new ChromeDriver();
 
 			driver.manage().window().maximize();
 
@@ -185,7 +182,7 @@ public class LoginExcel {
 	@DataProvider(name = "ProjectData")
 	public Object[][] passData() {
 
-		ExcelDataConfig config = new ExcelDataConfig("C:\\Users\\ThanhTT\\eclipse-workspace\\WebdriverBasic\\TestData\\Login.xls");
+		ExcelDataConfig config = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Login.xls");
 	
 //		int rows = config.getRowCount(0);
 		
@@ -209,7 +206,7 @@ public class LoginExcel {
 	@DataProvider(name = "ProjectData1")
 	public Object[][] passData1() {
 
-		ExcelDataConfig config = new ExcelDataConfig("C:\\Users\\ThanhTT\\eclipse-workspace\\WebdriverBasic\\TestData\\Login.xls");
+		ExcelDataConfig config = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Login.xls");
 	
 //		int rows = config.getRowCount(0);
 		
