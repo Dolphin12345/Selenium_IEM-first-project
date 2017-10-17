@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -55,7 +56,7 @@ public class LoginUnsuccess {
 		WebElement LoginMenu = getElementById(driver, "login");
 		action.moveToElement(LoginMenu).perform();
 		LoginMenu.click();
-		 Thread.sleep(1000);
+		Thread.sleep(1000);
 
 		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 			System.out.println("Row: " + i);
