@@ -9,7 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class ExcelDataConfig {
 	
-	HSSFWorkbook wb;
+	public static HSSFWorkbook wb;
 	HSSFSheet sheet1;
 	
 	public ExcelDataConfig(String excelPath)
@@ -48,6 +48,7 @@ public class ExcelDataConfig {
 	public HSSFSheet getSheet(int sheetIndex) {
 		return wb.getSheetAt(sheetIndex);
 	}
+
 	
 
 }

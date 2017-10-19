@@ -210,7 +210,7 @@ public class LoginExcel {
 	
 //		int rows = config.getRowCount(0);
 		
-		int rows1 = 2;
+		int rows1 = 3;
 
 		Object[][] data = new Object[rows1][2];
 		for (int i = 1; i < rows1; i++) {
