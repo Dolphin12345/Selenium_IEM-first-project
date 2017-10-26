@@ -54,7 +54,8 @@ public class Create_User_Unsuccess {
 //		WebElement Username1 = driver.findElement(By.className("modal-body"));
 //		List<WebElement> rowUserID = pageOne.findElement(By.xpath("//*[contains(@class,'form-text')]"));
 		
-		WebElement notiUserIDRequired = pageOne.findElement(By.xpath(".//*[@jhitranslate=\"entity.validation.required\"]"));
+//		WebElement notiUserIDRequired = pageOne.findElement(By.xpath(".//*[@jhitranslate=\"entity.validation.required\"]"));
+		WebElement notiUserIDRequired = pageOne.findElement(By.xpath("html/body/jhi-main/div[2]/div/jhi-user-management-edit/form/div/div[2]/div/div/small[1]/span"));
 		String notiactual1 = notiUserIDRequired.getText();
 		String notiexpect1 = file.getSheet(0).getRow(1).getCell(2).getStringCellValue();
 		System.out.println("---" + notiactual1 + "---");
