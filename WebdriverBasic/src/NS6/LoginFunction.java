@@ -76,8 +76,8 @@ public class LoginFunction {
 
 			} else {
 				resultCell.setCellValue("FAILED");
-
 			}
+			
 			driver.close();
 			System.out.println("Row " + i + " - Username: " + user + " / Pass: " + pass + " >>>Result: " + resultCell);
 		}

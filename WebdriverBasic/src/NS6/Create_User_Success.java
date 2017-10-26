@@ -20,9 +20,10 @@ public class Create_User_Success {
 
 		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
 		ExcelDataConfig file = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Create-User-Success.xls");
-
+		
 		WebDriver driver = Login.LoginToIEM();	
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+		
 		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.management\"]");
 		Management_Dropdownlist.click();
 
@@ -71,7 +72,8 @@ public class Create_User_Success {
 			ConfirmPassword.sendKeys(confirmpass);
 
 			WebElement AccountDeactivation = lib.getElement.getElementById(driver, "field_IsActivated");
-			if (isActived) // if Checked
+			if (
+					isActived) // if Checked
 				AccountDeactivation.click();
 			Thread.sleep(2000);
 
@@ -103,7 +105,7 @@ public class Create_User_Success {
 			}
 			System.out.println(">>> Row " + i + "- Created user successfully!");
 
-		}
+	}
 
 		driver.close();
 		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create-User-Success.xls"));

@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="135450" started-at="2017-10-19T09:31:59Z" finished-at="2017-10-19T09:34:14Z">
+  <suite name="Default suite" duration-ms="322809" started-at="2017-10-25T10:22:43Z" finished-at="2017-10-25T10:28:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="135450" started-at="2017-10-19T09:31:59Z" finished-at="2017-10-19T09:34:14Z">
-      <class name="NS6.LoginFunction">
-        <test-method status="PASS" signature="loginSuccess()[pri:0, instance:NS6.LoginFunction@184cf7cf]" name="loginSuccess" duration-ms="91773" started-at="2017-10-19T16:31:59Z" finished-at="2017-10-19T16:33:30Z">
+    <test name="Default test" duration-ms="322809" started-at="2017-10-25T10:22:43Z" finished-at="2017-10-25T10:28:05Z">
+      <class name="NS6.Delete_User">
+        <test-method status="PASS" signature="deleteSuccess()[pri:0, instance:NS6.Delete_User@6f7fd0e6]" name="deleteSuccess" duration-ms="322772" started-at="2017-10-25T17:22:43Z" finished-at="2017-10-25T17:28:05Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginSuccess -->
-        <test-method status="PASS" signature="loginUnsuccess()[pri:0, instance:NS6.LoginFunction@184cf7cf]" name="loginUnsuccess" duration-ms="43658" started-at="2017-10-19T16:33:30Z" finished-at="2017-10-19T16:34:14Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginUnsuccess -->
-      </class> <!-- NS6.LoginFunction -->
+        </test-method> <!-- deleteSuccess -->
+      </class> <!-- NS6.Delete_User -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
