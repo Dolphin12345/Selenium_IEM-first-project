@@ -87,13 +87,15 @@ public class Create_Project_Success {
 			}
 
 			/*--------------Insert Field 3: Customer name --------------*/
-			//Get list row in form
-//			List<WebElement> eListRowInForm = driver.findElements(By.xpath(".//*[contains(@class,'form-group')]"));
-			
-//			WebElement eRowCustomerName = eListRowInForm.get(0);
-//			WebElement ePopupCustomerName = eRowCustomerName
-//					.findElement(By.xpath("//div[contains(@class,'col-sm-9')]/div/span"));
-			WebElement ePopupCustomerName= driver.findElement(By.xpath("html/body/jhi-main/div[2]/div/jhi-project-registration-edit/form/div[1]/div[6]/div[1]/div[3]/div/div[1]/span"));
+			// Get list row in form
+			// List<WebElement> eListRowInForm =
+			// driver.findElements(By.xpath(".//*[contains(@class,'form-group')]"));
+
+			// WebElement eRowCustomerName = eListRowInForm.get(0);
+			// WebElement ePopupCustomerName = eRowCustomerName
+			// .findElement(By.xpath("//div[contains(@class,'col-sm-9')]/div/span"));
+			WebElement ePopupCustomerName = driver.findElement(By.xpath(
+					"html/body/jhi-main/div[2]/div/jhi-project-registration-edit/form/div[1]/div[6]/div[1]/div[3]/div/div[1]/span"));
 
 			try {
 				action.moveToElement(ePopupCustomerName).perform();
@@ -168,64 +170,62 @@ public class Create_Project_Success {
 			eOrderSchedule.sendKeys(orderSchedule);
 
 			/*--------------Insert Field 7:  Responsibility By --------------*/
-			WebElement ePopupResponsibilityBy = driver.findElement(By.xpath("html/body/jhi-main/div[2]/div/jhi-project-registration-edit/form/div[1]/div[6]/div[1]/div[7]/div/div[1]/span/i"));
-//			WebElement eListRowResponsibility = eListRowInForm.get(1);
-			
-//			WebElement ePopupResponsibilityBy= eListRowResponsibility.findElement(By.xpath("//div[contains(@class,'col-sm-9')]/div/span"));
-			
-				action.moveToElement(ePopupResponsibilityBy).perform();
-				ePopupResponsibilityBy.click();
-				Thread.sleep(2000);
-				Boolean isFind = false;
-				while (isFind == false) {
-					// List all row in a current page
-					WebElement popup = lib.getElement.getElementByXpath(driver, "//*[@class=\"modal-content\"]");
-					List<WebElement> listEmployee  = popup
-							.findElements(By.xpath(".//*[contains(@class,'table-striped')]/tbody/tr"));
-					String ResponsibilityBy = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(7));
+			WebElement ePopupResponsibilityBy = driver.findElement(By.xpath(
+					"html/body/jhi-main/div[2]/div/jhi-project-registration-edit/form/div[1]/div[6]/div[1]/div[7]/div/div[1]/span/i"));
+			// WebElement eListRowResponsibility = eListRowInForm.get(1);
 
-					// Print list elements
-					System.out
-							.println("===============================================================================");
-					for (WebElement e : listEmployee) {
-						System.out.println(e.getText());
-					}
-					System.out
-							.println("===============================================================================");
+			// WebElement ePopupResponsibilityBy=
+			// eListRowResponsibility.findElement(By.xpath("//div[contains(@class,'col-sm-9')]/div/span"));
 
-					WebElement foundResponsibilityBy = getRow(listEmployee, ResponsibilityBy);
+			action.moveToElement(ePopupResponsibilityBy).perform();
+			ePopupResponsibilityBy.click();
+			Thread.sleep(2000);
+			Boolean isFind = false;
+			while (isFind == false) {
+				// List all row in a current page
+				WebElement popup = lib.getElement.getElementByXpath(driver, "//*[@class=\"modal-content\"]");
+				List<WebElement> listEmployee = popup
+						.findElements(By.xpath(".//*[contains(@class,'table-striped')]/tbody/tr"));
+				String ResponsibilityBy = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(7));
 
-					if (foundResponsibilityBy != null) {
-						WebElement saveButton = popup
-								.findElement(By.xpath(".//*[contains(@jhitranslate,'entity.action.save')]"));
-						foundResponsibilityBy.isSelected();
-						Thread.sleep(5000);
-						saveButton.click();
-						Thread.sleep(3000);
-						isFind = true;
-						break;
+				// Print list elements
+				System.out.println("===============================================================================");
+				for (WebElement e : listEmployee) {
+					System.out.println(e.getText());
+				}
+				System.out.println("===============================================================================");
+
+				WebElement foundResponsibilityBy = getRow(listEmployee, ResponsibilityBy);
+
+				if (foundResponsibilityBy != null) {
+					WebElement saveButton = popup
+							.findElement(By.xpath(".//*[contains(@jhitranslate,'entity.action.save')]"));
+					foundResponsibilityBy.isSelected();
+					Thread.sleep(5000);
+					saveButton.click();
+					Thread.sleep(3000);
+					isFind = true;
+					break;
+
+				} else {
+					System.out.println("STT " + ResponsibilityBy + " : not found in this page. Next page...!");
+					// Verify the last page
+					WebElement nextPage = lib.getElement.getElementByXpath(driver, "//a[@aria-label=\"Next\"]");
+					String tabIndex = nextPage.getAttribute("tabindex");
+					System.out.println(tabIndex);
+					if (tabIndex == null) {
+						nextPage.click();
+						Thread.sleep(1000);
 
 					} else {
-						System.out.println("STT " + ResponsibilityBy + " : not found in this page. Next page...!");
-						// Verify the last page
-						WebElement nextPage = lib.getElement.getElementByXpath(driver, "//a[@aria-label=\"Next\"]");
-						String tabIndex = nextPage.getAttribute("tabindex");
-						System.out.println(tabIndex);
-						if (tabIndex == null) {
-							nextPage.click();
-							Thread.sleep(1000);
-
-						} else {
-							System.out.println("Row: " + i + " UserID = " + ResponsibilityBy
-									+ " >>> Not found ResponsibilityBy on this page!");
-							// pageOne.click();
-							Thread.sleep(1000);
-							break;
-						}
+						System.out.println("Row: " + i + " UserID = " + ResponsibilityBy
+								+ " >>> Not found ResponsibilityBy on this page!");
+						// pageOne.click();
+						Thread.sleep(1000);
+						break;
 					}
 				}
-			
-			
+			}
 
 			/*--------------Insert Field 8:  Estimate URL --------------*/
 			String estimateURL = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(8));
@@ -268,12 +268,15 @@ public class Create_Project_Success {
 			// found!");
 			// }
 
-			/*------------------ Insert Field 13: Project Name------------------*/
+			/*------------------ Insert Field 13: Project Name----------------------------------
+			 * ---------------------------------------------------------------------------------*/
+
 			String projectName = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(13));
 			WebElement eProjectName = lib.getElement.getElementById(driver, "field_Name");
 			eProjectName.sendKeys(projectName);
 
-			/*------------------ Insert Field 14: Project Number-----------------*/
+			/*------------------ Insert Field 14: Project Number----------------------------------
+			 * ---------------------------------------------------------------------------------*/
 			String projectNumber = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(14));
 			WebElement eProjectNumber = lib.getElement.getElementById(driver, "field_ProjectNumber");
 			eProjectNumber.sendKeys(projectNumber);
@@ -318,11 +321,10 @@ public class Create_Project_Success {
 					"//span[@jhitranslate=\"entity.action.back\"]");
 
 			if (lib.EqualCompare.isEqual(notificationActual, notificationExpect)) {
-				
+
 				ok_button.click();
 				Thread.sleep(1500);
 
-				
 				back_button.click();
 				Thread.sleep(1500);
 				resultCell.setCellValue("PASSED");
@@ -337,14 +339,12 @@ public class Create_Project_Success {
 				System.out.println(">>> Row " + i + "- Created project unsuccessfully!");
 			}
 
-			
 		}
 		driver.close();
 		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create_Project.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}
-		
 
 	// Get all item in a row
 	private WebElement getRow(List<WebElement> elements, String userName) {
