@@ -43,11 +43,14 @@ public class Create_User_Unsuccess {
 		WebElement Email = lib.getElement.getElementById(driver, "field_Email");
 		WebElement Password = lib.getElement.getElementById(driver, "field_Password");
 		WebElement ConfirmPassword = lib.getElement.getElementById(driver, "field_confirmNewPassword");
+		WebElement CancelBtn = lib.getElement.getElementByXpath(driver,
+				"//span[@jhitranslate=\"entity.action.cancel\"]");
 
 		// --------------------1. UserID---------------------------------
 		// --------------------------------------------------------------
 
 		// Case 1: User ID = null
+		
 		Username.sendKeys("quyennt");
 		Thread.sleep(1000);
 		Username.clear();
@@ -75,15 +78,18 @@ public class Create_User_Unsuccess {
 
 			file.getSheet(0).getRow(1).createCell(3).setCellValue("PASSED");
 			System.out.println(">>> Row 1: UserID = null  >>> PASSED");
+			CancelBtn.click();
 
 
 		} else {
 			file.getSheet(0).getRow(1).createCell(3).setCellValue("FAILED");
 			System.out.println(">>> Row 1: UserID = null  >>> FAILED");
+			CancelBtn.click();
 
 		}
 
 		// Case 2: LoginID already exists in system
+		Management_User_Create.click();
 		Username.sendKeys("tham.01");
 		Display_name.sendKeys("ThamNt");
 		Email.sendKeys("test1810@gmail.com");

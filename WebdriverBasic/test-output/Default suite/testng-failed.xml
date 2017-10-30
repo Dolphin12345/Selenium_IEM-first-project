@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="NS6.Create_Project_Success">
+      <class name="NS6.Create_User_Unsuccess_New">
         <methods>
-          <include name="Create_Project_Unsuccess"/>
+          <include name="Create_Project_Unsuccess_New"/>
         </methods>
-      </class> <!-- NS6.Create_Project_Success -->
+      </class> <!-- NS6.Create_User_Unsuccess_New -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

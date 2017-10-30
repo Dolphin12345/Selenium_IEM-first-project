@@ -12,27 +12,30 @@ import org.testng.annotations.Test;
 import lib.ExcelDataConfig;
 import lib.Login;
 
-
 public class Create_User_Success {
 
 	@Test(testName = "Create_User_Success")
 	public Create_User_Success() throws Exception {
 
 		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Create-User-Success.xls");
-		
-		WebDriver driver = Login.LoginToIEM();	
+		ExcelDataConfig file = new ExcelDataConfig(
+				"D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Create-User-Success.xls");
+
+		WebDriver driver = Login.LoginToIEM();
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
-		
-		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.management\"]");
+
+		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,
+				"//span[@jhitranslate=\"global.menu.management\"]");
 		Management_Dropdownlist.click();
 
-		WebElement Management_User = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.entities.userManagement\"]");
+		WebElement Management_User = lib.getElement.getElementByXpath(driver,
+				"//span[@jhitranslate=\"global.menu.entities.userManagement\"]");
 		Management_User.click();
 		Thread.sleep(1000);
 
 		for (int i = 1; i <= file.getSheet(0).getLastRowNum(); i++) {
-			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"webApp.userManagement.home.createNewUser\"]");
+			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,
+					"//span[@jhitranslate=\"webApp.userManagement.home.createNewUser\"]");
 			Thread.sleep(1500);
 			Management_User_Create.click();
 			Thread.sleep(2000);
@@ -59,9 +62,9 @@ public class Create_User_Success {
 			Email.clear();
 			Email.sendKeys(email);
 
-			 WebElement Organization = lib.getElement.getElementById(driver, "field_Org");
-			 Select dropdown = new Select(Organization);
-			 dropdown.selectByVisibleText(organization);
+			WebElement Organization = lib.getElement.getElementById(driver, "field_Org");
+			Select dropdown = new Select(Organization);
+			dropdown.selectByVisibleText(organization);
 
 			WebElement Password = lib.getElement.getElementById(driver, "field_Password");
 			Password.clear();
@@ -72,13 +75,13 @@ public class Create_User_Success {
 			ConfirmPassword.sendKeys(confirmpass);
 
 			WebElement AccountDeactivation = lib.getElement.getElementById(driver, "field_IsActivated");
-			if (
-					isActived) // if Checked
+			if (isActived) // if Checked
 				AccountDeactivation.click();
 			Thread.sleep(2000);
 
-			WebElement save_user_button = lib.getElement.getElementByXpath(driver, "//span[@jhitranslate=\"entity.action.save\"]");
-			
+			WebElement save_user_button = lib.getElement.getElementByXpath(driver,
+					"//span[@jhitranslate=\"entity.action.save\"]");
+
 			try {
 				save_user_button.click();
 				Thread.sleep(1500);
@@ -92,11 +95,13 @@ public class Create_User_Success {
 			String notificationExpect = file.getSheet(0).getRow(i).getCell(8).getStringCellValue();
 
 			if (lib.EqualCompare.isEqual(notificationActual, notificationExpect)) {
-				WebElement ok_button = lib.getElement.getElementByXpath(driver, "//span[@jhitranslate=\"entity.action.ok\"]");
+				WebElement ok_button = lib.getElement.getElementByXpath(driver,
+						"//span[@jhitranslate=\"entity.action.ok\"]");
 				ok_button.click();
 				Thread.sleep(1500);
 
-				WebElement back_button = lib.getElement.getElementByXpath(driver, "//span[@jhitranslate=\"entity.action.back\"]");
+				WebElement back_button = lib.getElement.getElementByXpath(driver,
+						"//span[@jhitranslate=\"entity.action.back\"]");
 				back_button.click();
 				resultCell.setCellValue("PASSED");
 
@@ -105,7 +110,7 @@ public class Create_User_Success {
 			}
 			System.out.println(">>> Row " + i + "- Created user successfully!");
 
-	}
+		}
 
 		driver.close();
 		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create-User-Success.xls"));
