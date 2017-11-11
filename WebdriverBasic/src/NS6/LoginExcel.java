@@ -34,7 +34,7 @@ public class LoginExcel {
 		// WebElement LoginMenu = driver.findElement(By.id("login"));
 		// action.moveToElement(LoginMenu).perform();
 		// LoginMenu.click();
-		System.setProperty("webdriver.chrome.driver", "D:/SeleniumWebdriver/chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
 		WebDriver driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
@@ -96,7 +96,7 @@ public class LoginExcel {
 		@Test(dataProvider = "ProjectData1")
 		public void LoginToWebsite1(String user, String pass) throws InterruptedException {
 			
-			System.setProperty("webdriver.chrome.driver", "D:/SeleniumWebdriver/chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
 			WebDriver driver = new ChromeDriver();
 
 			driver.manage().window().maximize();
@@ -182,7 +182,7 @@ public class LoginExcel {
 	@DataProvider(name = "ProjectData")
 	public Object[][] passData() {
 
-		ExcelDataConfig config = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Login.xls");
+		ExcelDataConfig config = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Login.xls");
 	
 //		int rows = config.getRowCount(0);
 		
@@ -206,7 +206,7 @@ public class LoginExcel {
 	@DataProvider(name = "ProjectData1")
 	public Object[][] passData1() {
 
-		ExcelDataConfig config = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Login.xls");
+		ExcelDataConfig config = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Login.xls");
 	
 //		int rows = config.getRowCount(0);
 		

@@ -14,7 +14,7 @@ public class TestExcel {
 	
 	public static void main(String[] args) {
 		try {
-			FileInputStream file = new FileInputStream(new File("D:\\LoginUnsuccess - Copy.xls"));
+			FileInputStream file = new FileInputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\LoginUnsuccess - Copy.xls"));
 			HSSFWorkbook workbook = new HSSFWorkbook(file);
 			HSSFSheet sheet = workbook.getSheetAt(0);
 			

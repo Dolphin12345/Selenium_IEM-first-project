@@ -6,6 +6,7 @@
       <class name="NS6.LoginFunction">
         <methods>
           <include name="loginUnsuccess"/>
+          <include name="loginSuccess"/>
         </methods>
       </class> <!-- NS6.LoginFunction -->
     </classes>

@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="135450" started-at="2017-10-19T09:31:59Z" finished-at="2017-10-19T09:34:14Z">
+  <suite name="Default suite" duration-ms="144794" started-at="2017-11-10T13:09:28Z" finished-at="2017-11-10T13:11:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="135450" started-at="2017-10-19T09:31:59Z" finished-at="2017-10-19T09:34:14Z">
+    <test name="Default test" duration-ms="144794" started-at="2017-11-10T13:09:28Z" finished-at="2017-11-10T13:11:52Z">
       <class name="NS6.LoginFunction">
-        <test-method status="PASS" signature="loginSuccess()[pri:0, instance:NS6.LoginFunction@184cf7cf]" name="loginSuccess" duration-ms="91773" started-at="2017-10-19T16:31:59Z" finished-at="2017-10-19T16:33:30Z">
+        <test-method status="PASS" signature="loginSuccess()[pri:0, instance:NS6.LoginFunction@48fa0f47]" name="loginSuccess" duration-ms="102563" started-at="2017-11-10T20:09:28Z" finished-at="2017-11-10T20:11:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginSuccess -->
-        <test-method status="PASS" signature="loginUnsuccess()[pri:0, instance:NS6.LoginFunction@184cf7cf]" name="loginUnsuccess" duration-ms="43658" started-at="2017-10-19T16:33:30Z" finished-at="2017-10-19T16:34:14Z">
+        <test-method status="PASS" signature="loginUnsuccess()[pri:0, instance:NS6.LoginFunction@48fa0f47]" name="loginUnsuccess" duration-ms="42210" started-at="2017-11-10T20:11:10Z" finished-at="2017-11-10T20:11:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginUnsuccess -->

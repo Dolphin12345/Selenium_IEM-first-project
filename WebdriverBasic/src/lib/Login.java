@@ -12,7 +12,7 @@ public class Login {
 
 	public static WebDriver LoginToIEM() throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("http://192.168.7.43:9001/#/");
+		driver.get("http://101.99.15.229:4386");
 		driver.manage().window().maximize();
 		System.out.println("Open http://101.99.15.229:4386/#/");
 		Thread.sleep(1000);

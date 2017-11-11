@@ -18,8 +18,8 @@ public class Create_User_Success {
 	@Test(testName = "Create_User_Success")
 	public Create_User_Success() throws Exception {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\SeleniumWebdriver\\Workspace\\WebdriverBasic\\TestData\\Create-User-Success.xls");
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create-User-Success.xls");
 
 		WebDriver driver = Login.LoginToIEM();	
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
@@ -106,7 +106,7 @@ public class Create_User_Success {
 		}
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create-User-Success.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create-User-Success.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}

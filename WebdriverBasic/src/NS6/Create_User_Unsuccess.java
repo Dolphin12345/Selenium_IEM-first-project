@@ -24,8 +24,8 @@ public class Create_User_Unsuccess {
 	@Test(testName = "Create_User_Unsuccess")
 	public Create_User_Unsuccess() throws Exception {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		FileInputStream file = new FileInputStream(new File("D:\\Create_User_Unsuccess.xls"));
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		FileInputStream file = new FileInputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_User_Unsuccess.xls"));
 		HSSFWorkbook workbook = new HSSFWorkbook(file);
 		HSSFSheet sheet = workbook.getSheetAt(0);
 		HSSFCellStyle cellStyle = workbook.createCellStyle();
@@ -257,7 +257,7 @@ public class Create_User_Unsuccess {
 		
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create_User_Unsuccess.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_User_Unsuccess.xls"));
 		workbook.write(outFile);
 		outFile.close();
 	}

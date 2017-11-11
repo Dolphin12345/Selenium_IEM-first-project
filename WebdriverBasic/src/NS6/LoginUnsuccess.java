@@ -18,8 +18,8 @@ public class LoginUnsuccess {
 	@Test(testName = "Login Unssuccess")
 	public LoginUnsuccess() throws Exception {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\LoginUnsuccess.xls");
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\LoginUnsuccess.xls");
 
 		WebDriver driver = new ChromeDriver();
 		driver.get("http://101.99.15.229:4386/#/");
@@ -81,7 +81,7 @@ public class LoginUnsuccess {
 		}
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\LoginUnsuccess.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\LoginUnsuccess.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}

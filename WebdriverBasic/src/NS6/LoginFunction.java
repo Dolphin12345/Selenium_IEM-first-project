@@ -15,11 +15,15 @@ import lib.ExcelDataConfig;
 public class LoginFunction {
 
 	private WebDriver driver;
-	ExcelDataConfig file = new ExcelDataConfig("D:\\Login.xls");
+	ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Login.xls");
 
 	public void initForm() throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+//		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\chromedriver.exe");
+		String exePath = "D:\\01_Dolphin\\Selenium_Software\\chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", exePath);
 		driver = new ChromeDriver();
+		
 		driver.get("http://101.99.15.229:4386/#/");
 		driver.manage().window().maximize();
 		System.out.println("Open http://101.99.15.229:4386/#/");
@@ -129,7 +133,7 @@ public class LoginFunction {
 		}
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Login.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Login.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}
