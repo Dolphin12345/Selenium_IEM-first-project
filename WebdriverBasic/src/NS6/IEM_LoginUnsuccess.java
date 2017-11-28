@@ -13,10 +13,10 @@ import org.testng.annotations.Test;
 import lib.ExcelDataConfig;
 import lib.getElement;
 
-public class LoginUnsuccess {
+public class IEM_LoginUnsuccess {
 
 	@Test(testName = "Login Unssuccess")
-	public LoginUnsuccess() throws Exception {
+	public void IEM_LoginUnsuccess() throws Exception {
 
 		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
 		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\LoginUnsuccess.xls");

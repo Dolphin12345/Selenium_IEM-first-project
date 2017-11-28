@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import lib.ExcelDataConfig;
 
-public class LoginFunction {
+public class IEM_LoginFunction {
 
 	private WebDriver driver;
 	ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Login.xls");
@@ -25,7 +25,8 @@ public class LoginFunction {
 		driver = new ChromeDriver();
 		
 		driver.get("http://101.99.15.229:4386/#/");
-		driver.manage().window().maximize();
+		//The latest Chrome version is ocurring an error which can't open maximum- (Session info: chrome=62.0.3202.94)=> unable to connect to renderer
+//		 driver.manage().window().maximize();
 		System.out.println("Open http://101.99.15.229:4386/#/");
 		Thread.sleep(1000);
 

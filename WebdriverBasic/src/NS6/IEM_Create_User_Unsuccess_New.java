@@ -10,29 +10,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import lib.ExcelDataConfig;
-import lib.Login;
+import lib.IEM_CommonLogin_New;
 
-public class Create_User_Unsuccess_New {
-	@Test(testName = "Create_Project_Unsuccess")
-	public void Create_Project_Unsuccess_New() throws Exception {
+public class IEM_Create_User_Unsuccess_New {
+	@Test(testName = "Create_User_Unsuccess")
+	public void Create_User_Unsuccess_New() throws Exception {
 
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\Create_User_Unsuccess.xls");
-		WebDriver driver = Login.LoginToIEM();
+		System.setProperty("webdriver.chrome.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_User_Unsuccess.xls");
+		
+		// Call from [IEM_CommonLogin_New] class
+		IEM_CommonLogin_New driverCommonLogin = new IEM_CommonLogin_New ();
+		driverCommonLogin.LaunchBrowser();
+		WebDriver driver = driverCommonLogin.LoginToIEM();
+				
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
-		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,
-				"//span[@jhitranslate=\"global.menu.management\"]");
+		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.management\"]");
 		Management_Dropdownlist.click();
 		Thread.sleep(1000);
 
-		WebElement Management_User = lib.getElement.getElementByXpath(driver,
-				"//span[@jhitranslate=\"global.menu.entities.userManagement\"]");
+		WebElement Management_User = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.entities.userManagement\"]");
 		Management_User.click();
 		Thread.sleep(1000);
 
 		for (int i = 1; i <= file.getSheet(0).getLastRowNum(); i++) {
-			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"webApp.userManagement.home.createNewUser\"]");
+			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"webApp.userManagement.home.createNewUser\"]");
 			Thread.sleep(1500);
 			Management_User_Create.click();
 			Thread.sleep(2000);
@@ -50,8 +52,7 @@ public class Create_User_Unsuccess_New {
 			WebElement eEmail = lib.getElement.getElementById(driver, "field_Email");
 			WebElement ePassword = lib.getElement.getElementById(driver, "field_Password");
 			WebElement eConfirmPassword = lib.getElement.getElementById(driver, "field_confirmNewPassword");
-			WebElement eCancelBtn = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"entity.action.cancel\"]");
+			WebElement eCancelBtn = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"entity.action.cancel\"]");
 			WebElement eSaveBtn = driver.findElement(By.xpath(".//*[contains(@class,'btn-primary')]"));
 			eUsername.sendKeys(fUserName);
 			eDisplayName.sendKeys(fDisplayName);
@@ -62,8 +63,7 @@ public class Create_User_Unsuccess_New {
 
 			// Get list alert messages
 			String textMessage = null;
-			List<WebElement> listElement = driver
-					.findElements(By.xpath(".//*[contains(@class,'form-group')]/div/div/small"));
+			List<WebElement> listElement = driver.findElements(By.xpath(".//*[contains(@class,'form-group')]/div/div/small"));
 
 			// Get alert message display
 			for (WebElement e : listElement) {
@@ -82,8 +82,7 @@ public class Create_User_Unsuccess_New {
 			//User ID exists in DB, in this case, need submit DATA to server
 			if (i == 2) {
 				eSaveBtn.click();
-				WebElement eAlertDismissible = driver
-						.findElement(By.xpath(".//*[contains(@class,'alert-dismissible')]/div"));
+				WebElement eAlertDismissible = driver.findElement(By.xpath(".//*[contains(@class,'alert-dismissible')]/div"));
 				String eTextAlert = eAlertDismissible.getText();
 				if (eSaveBtnDisable == null && lib.EqualCompare.isEqual(eTextAlert, fMessageExpect)) {
 					System.out.println("--------------" + eSaveBtnDisable + "----------------");
@@ -125,7 +124,7 @@ public class Create_User_Unsuccess_New {
 		}
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create_User_Unsuccess.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_User_Unsuccess.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}

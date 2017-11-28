@@ -10,18 +10,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import lib.ExcelDataConfig;
-import lib.Login;
+import lib.IEM_CommonLogin_New;
 
-
-public class Create_User_Success {
-
+public class IEM_Create_User_Success {
 	@Test(testName = "Create_User_Success")
-	public Create_User_Success() throws Exception {
-
+	public void IEM_Create_User_Success() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
 		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create-User-Success.xls");
-
-		WebDriver driver = Login.LoginToIEM();	
+		
+		System.out.println("Create User on the IEM");
+		
+		// Call from [IEM_CommonLogin_New] class
+		IEM_CommonLogin_New driverCommonLogin = new IEM_CommonLogin_New ();
+		driverCommonLogin.LaunchBrowser();
+		WebDriver driver = driverCommonLogin.LoginToIEM();	
+		
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.management\"]");
 		Management_Dropdownlist.click();

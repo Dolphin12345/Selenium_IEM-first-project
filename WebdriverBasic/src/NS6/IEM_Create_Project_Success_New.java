@@ -16,43 +16,35 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import lib.ExcelDataConfig;
-import lib.Login;
+import lib.IEM_CommonLogin_New;
 
-public class Create_Project_Success {
-	@Test(testName = "Create_Project_Unsuccess")
-	public void Create_Project_Unsuccess() throws Exception {
-
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\Create_Project.xls");
-		WebDriver driver = Login.LoginToIEM();
+public class IEM_Create_Project_Success_New {
+	@Test(testName = "IEM_Create_Project_Success")
+	public void IEM_Create_Project_Success_New() throws Exception {
+		System.out.println("Create Project on the IEM");
+		
+		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_Project.xls");
+		
+		// Call from [IEM_CommonLogin_New] class
+		IEM_CommonLogin_New driverCommonLogin = new IEM_CommonLogin_New ();
+		driverCommonLogin.LaunchBrowser();
+		WebDriver driver = driverCommonLogin.LoginToIEM();	
+		
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 		Actions action = new Actions(driver);
 
-		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,
-				"//span[@jhitranslate=\"global.menu.registration\"]");
+		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.registration\"]");
 		Management_Dropdownlist.click();
 		Thread.sleep(1000);
 
-		WebElement Management_User = lib.getElement.getElementByXpath(driver,
-				"//span[@jhitranslate=\"global.menu.entities.projectInformation\"]");
+		WebElement Management_User = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"global.menu.entities.projectInformation\"]");
 		Management_User.click();
 		Thread.sleep(1000);
-
-		// WebElement Management_User_Create =
-		// lib.getElement.getElementByXpath(driver,
-		// "//span[@jhitranslate=\"webApp.projectRegistration.home.createNewProject\"]");
-		// Thread.sleep(1500);
-		// Management_User_Create.click();
-		// Thread.sleep(2000);
-		//
-		// JavascriptExecutor js = (JavascriptExecutor) driver;
-		// js.executeScript("javascript:window.scrollBy(350,1000)");
-		// Thread.sleep(1000);
-
+		
 		for (int i = 1; i <= file.getSheet(0).getLastRowNum(); i++) {
 
-			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"webApp.projectRegistration.home.createNewProject\"]");
+			WebElement Management_User_Create = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"webApp.projectRegistration.home.createNewProject\"]");
 			Thread.sleep(1500);
 			Management_User_Create.click();
 			Thread.sleep(2000);
@@ -87,13 +79,6 @@ public class Create_Project_Success {
 			}
 
 			/*--------------Insert Field 3: Customer name --------------*/
-			// Get list row in form
-			// List<WebElement> eListRowInForm =
-			// driver.findElements(By.xpath(".//*[contains(@class,'form-group')]"));
-
-			// WebElement eRowCustomerName = eListRowInForm.get(0);
-			// WebElement ePopupCustomerName = eRowCustomerName
-			// .findElement(By.xpath("//div[contains(@class,'col-sm-9')]/div/span"));
 			WebElement ePopupCustomerName = driver.findElement(By.xpath(
 					"html/body/jhi-main/div[2]/div/jhi-project-registration-edit/form/div[1]/div[6]/div[1]/div[3]/div/div[1]/span"));
 
@@ -257,16 +242,6 @@ public class Create_Project_Success {
 			} catch (Exception e) {
 				System.out.println("Not found Element! Try again please...");
 			}
-			// List<WebElement> listOrganization =
-			// eOrganization.findElements(By.tagName("option"));
-			//
-			// if (businessStatusNumber >= 0 && businessStatusNumber <=
-			// oRadioButton.size()) {
-			// eOrganization.sendKeys(organization);
-			// } else {
-			// throw new NotFoundException("Option " + eOrganization + " not
-			// found!");
-			// }
 
 			/*------------------ Insert Field 13: Project Name----------------------------------
 			 * ---------------------------------------------------------------------------------*/
@@ -300,8 +275,9 @@ public class Create_Project_Success {
 			String contractName = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(18));
 			WebElement eContractName = lib.getElement.getElementById(driver, "field_ContractName");
 			eContractName.sendKeys(contractName);
-			WebElement save_user_button = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"entity.action.save\"]");
+			
+			/*--------------Save button --------------*/
+			WebElement save_user_button = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"entity.action.save\"]");
 
 			try {
 				save_user_button.click();
@@ -315,10 +291,11 @@ public class Create_Project_Success {
 			String notificationActual = TextNoti.getText();
 			String notificationExpect = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(19));
 			Cell resultCell = file.getSheet(0).getRow(i).createCell(20);
-			WebElement ok_button = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"entity.action.ok\"]");
-			WebElement back_button = lib.getElement.getElementByXpath(driver,
-					"//span[@jhitranslate=\"entity.action.back\"]");
+			WebElement ok_button = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"entity.action.ok\"]");
+			WebElement back_button = lib.getElement.getElementByXpath(driver,"//span[@jhitranslate=\"entity.action.back\"]");
+			System.out.println("Actual message is " + notificationActual);
+			System.out.println("Expectation message is " + notificationExpect);
+			System.out.println(lib.EqualCompare.isEqual(notificationActual, notificationExpect));
 
 			if (lib.EqualCompare.isEqual(notificationActual, notificationExpect)) {
 
@@ -341,20 +318,17 @@ public class Create_Project_Success {
 
 		}
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Create_Project.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_Project.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}
 
 	// Get all item in a row
-	private WebElement getRow(List<WebElement> elements, String userName) {
-		// WebDriver driver = null; // Assigned elsewhere
-		// JavascriptExecutor js = (JavascriptExecutor) driver;
+	private WebElement getRow(List<WebElement> elements, String projectName) {
 
 		for (WebElement e : elements) {
-			String eUserName = getUserName(e);
-			if (eUserName.equals(userName)) {
-				// e.isSelected();
+			String eProjectName = getProjectName(e);
+			if (eProjectName.equals(projectName)) {
 				e.click();
 				System.out.println("Have a row!");
 				return e;
@@ -364,12 +338,12 @@ public class Create_Project_Success {
 	}
 
 	// Get text in the <td> tag
-	private String getUserName(WebElement element) {
+	private String getProjectName(WebElement element) {
 		List<WebElement> list = element.findElements(By.tagName("td"));
 		WebElement eUserName = list.get(0);
-		String userName = eUserName.getText();
-		System.out.println("userName: " + userName);
-		return userName;
+		String projectName = eUserName.getText();
+		System.out.println("The project name: " + projectName);
+		return projectName;
 	}
-
+			
 }

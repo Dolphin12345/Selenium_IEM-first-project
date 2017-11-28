@@ -8,13 +8,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import lib.getElement;
 
-public class Login {
-
+public class IEM_CommonLogin {
+	
 	public static WebDriver LoginToIEM() throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
-		driver.get("http://101.99.15.229:4386");
-		driver.manage().window().maximize();
-		System.out.println("Open http://101.99.15.229:4386/#/");
+		String baseURL = "http://101.99.15.229:4386/#/";
+		
+		driver.get("http://192.168.7.43:9001/#/");
+		//The latest Chrome version is ocurring an error which can't open maximum- (Session info: chrome=62.0.3202.94)=> unable to connect to renderer
+//		 driver.manage().window().maximize();
+		System.out.println("Open http://192.168.7.43:9001/#/");
 		Thread.sleep(1000);
 
 		Actions action = new Actions(driver);
@@ -38,6 +41,7 @@ public class Login {
 
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 		Thread.sleep(1000);
+		
 		WebElement LoginButton = lib.getElement.getElementByXpath(driver, "//button[@jhitranslate=\"login.form.button\"]");
 		try {
 			LoginButton.click();

@@ -11,7 +11,7 @@ package NS6;
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import lib.ExcelDataConfig;
-	import lib.Login;
+import lib.IEM_CommonLogin;
 	import org.testng.annotations.Test;
 
 	public class View_User_Detail  {
@@ -20,7 +20,7 @@ package NS6;
 			System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
 			ExcelDataConfig file = new ExcelDataConfig("D:\\View_User.xls");
 
-			WebDriver driver = Login.LoginToIEM();
+			WebDriver driver = IEM_CommonLogin.LoginToIEM();
 			driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
 			WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,

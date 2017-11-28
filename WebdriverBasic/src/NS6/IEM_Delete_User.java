@@ -7,19 +7,25 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.Cell;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import lib.ExcelDataConfig;
-import lib.Login;
+import lib.IEM_CommonLogin_New;
+
 import org.testng.annotations.Test;
 
-public class Delete_User {
+public class IEM_Delete_User {
 	@Test(testName = "Delete_User_Success")
 	public void deleteSuccess() throws InterruptedException, IOException {
-		System.setProperty("webdriver.chrome.driver", "D:\\SeleniumWebdriver\\chromedriver.exe");
-		ExcelDataConfig file = new ExcelDataConfig("D:\\Delete_User.xls");
+		System.setProperty("webdriver.chrome.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
+		ExcelDataConfig file = new ExcelDataConfig("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Delete_User.xls");
 
-		WebDriver driver = Login.LoginToIEM();
+		// Call from [IEM_CommonLogin_New] class
+		IEM_CommonLogin_New driverCommonLogin = new IEM_CommonLogin_New ();
+		driverCommonLogin.LaunchBrowser();
+		WebDriver driver = driverCommonLogin.LoginToIEM();	
+		
 		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
 		WebElement Management_Dropdownlist = lib.getElement.getElementByXpath(driver,
@@ -32,6 +38,11 @@ public class Delete_User {
 		Thread.sleep(1000);
 		
 		for (int i = 1; i <= file.getSheet(0).getLastRowNum(); i++) {
+			// Scroll browser
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("javascript:window.scrollBy(350,1000)");
+			Thread.sleep(1000);
+			
 			Boolean isFind = false;
 			
 			// Confirm page 1
@@ -40,8 +51,7 @@ public class Delete_User {
 
 			while (isFind == false) {
 
-				List<WebElement> items = driver
-						.findElements(By.xpath(".//*[contains(@class,'table-striped')]/tbody/tr"));
+				List<WebElement> items = driver.findElements(By.xpath(".//*[contains(@class,'table-striped')]/tbody/tr"));
 				System.out.println("Have "+ items.size() + " in this page");
 				String user_name = lib.GetCellToString.getCellValue(file.getSheet(0).getRow(i).getCell(1));
 				
@@ -57,8 +67,7 @@ public class Delete_User {
 					
 					deleteBtn.click();
 					WebElement confirmPopup = driver.findElement(By.name("deleteForm"));
-					WebElement yesButton = confirmPopup
-							.findElement(By.xpath(".//*[@jhitranslate=\"entity.action.delete\"]"));
+					WebElement yesButton = confirmPopup.findElement(By.xpath(".//*[@jhitranslate=\"entity.action.delete\"]"));
 					Thread.sleep(1500);
 					yesButton.click();
 					Thread.sleep(1000);
@@ -120,7 +129,7 @@ public class Delete_User {
 		}
 
 		driver.close();
-		FileOutputStream outFile = new FileOutputStream(new File("D:\\Delete_User.xls"));
+		FileOutputStream outFile = new FileOutputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Delete_User.xls"));
 		lib.ExcelDataConfig.wb.write(outFile);
 		outFile.close();
 	}

@@ -20,9 +20,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Create_User_Unsuccess {
+public class IEM_Create_User_Unsuccess {
 	@Test(testName = "Create_User_Unsuccess")
-	public Create_User_Unsuccess() throws Exception {
+	public void IEM_Create_User_Unsuccess() throws Exception {
 
 		System.setProperty("webdriver.gecko.driver", "D:\\01_Dolphin\\Selenium_Software\\geckodriver.exe");
 		FileInputStream file = new FileInputStream(new File("D:\\01_Dolphin\\Selenium_Webdriver\\Selenium_IEM-first-project\\WebdriverBasic\\TestData\\Create_User_Unsuccess.xls"));

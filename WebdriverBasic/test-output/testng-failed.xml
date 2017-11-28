@@ -3,12 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="NS6.LoginFunction">
+      <class name="NS6.IEM_Create_Project_Success_New">
         <methods>
-          <include name="loginUnsuccess"/>
-          <include name="loginSuccess"/>
+          <include name="IEM_Create_Project_Success_New"/>
         </methods>
-      </class> <!-- NS6.LoginFunction -->
+      </class> <!-- NS6.IEM_Create_Project_Success_New -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
